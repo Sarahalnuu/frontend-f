@@ -1,38 +1,24 @@
 import * as React from "react"
 import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
+  ChakraProvider, Box, theme, Flex, VStack, Heading,Text,Input,Button
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import LoginPage from "./components/login/LoginForm"
+import { RegisterPage } from "./Pages/Register.Page"
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BlogsPage from "./Pages/BlogPage";
 
-export const App = () => (
+export const App = () => {
+
+ return (
+  <BrowserRouter>
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+    <Routes>
+    <Route path='/login' element={<LoginPage />} />
+    <Route path='/register' element={<RegisterPage />} />
+    <Route path='/' element={<BlogsPage />} />
+    </Routes>
   </ChakraProvider>
+  </BrowserRouter>
 )
+  }
